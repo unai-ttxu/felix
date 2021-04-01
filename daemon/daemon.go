@@ -57,7 +57,7 @@ import (
 	lclogutils "github.com/unai-ttxu/libcalico-go/lib/logutils"
 	"github.com/unai-ttxu/libcalico-go/lib/set"
 	"github.com/projectcalico/pod2daemon/binder"
-	"github.com/projectcalico/typha/pkg/syncclient"
+	"github.com/unai-ttxu/typha/pkg/syncclient"
 )
 
 const usage = `Felix, the Calico per-host daemon.
