@@ -1,6 +1,14 @@
 hash: abf9eb3b6c8d8000a0877b042c65c3569978d9183a9abff6bdc82d7dccf582e1
 updated: 2020-01-02T21:41:43.224649775-08:00
 imports:
+- name: github.com/coreos/go-semver
+  version: e214231b295a8ea9479f11b70b35d5acf3556d9b
+  subpackages:
+  - semver
+- name: github.com/ugorji/go
+  version: bdcc60b419d136a85cdf2e7cbcac34b3f1cd6e57
+  subpackages:
+  - codec
 - name: gopkg.in/tchap/go-patricia.v2
   version: 666120de432aea38ab06bd5c818f04f4129882c9
   subpackages:
@@ -251,7 +259,7 @@ imports:
   subpackages:
   - binder
 - name: github.com/unai-ttxu/typha
-  version: 2f0c6273d54cef13287835273b99b2385088af35 
+  version: 16309392d4eab82549db2e81eb727014fdb79be8 
   subpackages:
   - pkg/syncclient
   - pkg/syncproto
