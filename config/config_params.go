@@ -27,6 +27,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/projectcalico/libcalico-go/lib/api"
 	"github.com/projectcalico/libcalico-go/lib/apiconfig"
 	"github.com/projectcalico/libcalico-go/lib/names"
 	"github.com/projectcalico/libcalico-go/lib/numorstring"
@@ -100,7 +101,7 @@ type Config struct {
 	UseInternalDataplaneDriver bool   `config:"bool;true"`
 	DataplaneDriver            string `config:"file(must-exist,executable);calico-iptables-plugin;non-zero,die-on-fail,skip-default-validation"`
 
-	DatastoreType string `config:"oneof(kubernetes,etcdv3);etcdv3;non-zero,die-on-fail,local"`
+	DatastoreType string `config:"oneof(kubernetes,etcdv2);etcdv2;non-zero,die-on-fail,local"`
 
 	FelixHostname string `config:"hostname;;local,non-zero"`
 
@@ -381,51 +382,51 @@ func (config *Config) setBy(name string, source Source) bool {
 	return set
 }
 
-func (config *Config) setByConfigFileOrEnvironment(name string) bool {
-	return config.setBy(name, ConfigFile) || config.setBy(name, EnvironmentVariable)
-}
-
 func (config *Config) DatastoreConfig() apiconfig.CalicoAPIConfig {
-	// We want Felix's datastore connection to be fully configurable using the same
-	// CALICO_XXX_YYY (or just XXX_YYY) environment variables that work for any libcalico-go
-	// client - for both the etcdv3 and KDD cases.  However, for the etcd case, Felix has for a
-	// long time supported FELIX_XXXYYY environment variables, and we want those to keep working
-	// too.
+	// Special case for etcdv2 datastore, where we want to honour established Felix-specific
+	// config mechanisms.
+	if config.DatastoreType == "etcdv2" {
+		// Build a CalicoAPIConfig with the etcd fields filled in from Felix-specific
+		// config.
+		var etcdEndpoints string
+		if len(config.EtcdEndpoints) == 0 {
+			etcdEndpoints = config.EtcdScheme + "://" + config.EtcdAddr
+		} else {
+			etcdEndpoints = strings.Join(config.EtcdEndpoints, ",")
+		}
+		etcdCfg := apiconfig.EtcdConfig{
+			EtcdEndpoints:  etcdEndpoints,
+			EtcdKeyFile:    config.EtcdKeyFile,
+			EtcdCertFile:   config.EtcdCertFile,
+			EtcdCACertFile: config.EtcdCaFile,
+		}
+		return apiconfig.CalicoAPIConfig{
+			Spec: apiconfig.CalicoAPIConfigSpec{
+				DatastoreType: api.EtcdV2,
+				EtcdConfig:    etcdCfg,
+			},
+		}
+	}
 
-	// To achieve that, first build a CalicoAPIConfig using libcalico-go's
-	// LoadClientConfigFromEnvironment - which means incorporating defaults and CALICO_XXX_YYY
-	// and XXX_YYY variables.
+	// Build CalicoAPIConfig from the environment.  This means that any XxxYyy field in
+	// CalicoAPIConfigSpec can be set by a corresponding XXX_YYY or CALICO_XXX_YYY environment
+	// variable, and that the datastore type can be set by a DATASTORE_TYPE or
+	// CALICO_DATASTORE_TYPE variable.  (Except in the etcdv2 case which is handled specially
+	// above.)
 	cfg, err := apiconfig.LoadClientConfigFromEnvironment()
 	if err != nil {
 		log.WithError(err).Panic("Failed to create datastore config")
 	}
-
-	// Now allow FELIX_XXXYYY variables or XxxYyy config file settings to override that, in the
-	// etcd case.
-	if config.setByConfigFileOrEnvironment("DatastoreType") && config.DatastoreType == "etcdv3" {
-		cfg.Spec.DatastoreType = apiconfig.EtcdV3
-		// Endpoints.
-		if config.setByConfigFileOrEnvironment("EtcdEndpoints") && len(config.EtcdEndpoints) > 0 {
-			cfg.Spec.EtcdEndpoints = strings.Join(config.EtcdEndpoints, ",")
-		} else if config.setByConfigFileOrEnvironment("EtcdAddr") {
-			cfg.Spec.EtcdEndpoints = config.EtcdScheme + "://" + config.EtcdAddr
-		}
-		// TLS.
-		if config.setByConfigFileOrEnvironment("EtcdKeyFile") {
-			cfg.Spec.EtcdKeyFile = config.EtcdKeyFile
-		}
-		if config.setByConfigFileOrEnvironment("EtcdCertFile") {
-			cfg.Spec.EtcdCertFile = config.EtcdCertFile
-		}
-		if config.setByConfigFileOrEnvironment("EtcdCaFile") {
-			cfg.Spec.EtcdCACertFile = config.EtcdCaFile
-		}
+	// If that didn't set the datastore type (in which case the field will have been set to its
+	// default 'etcdv2' value), copy it from the Felix config.
+	if cfg.Spec.DatastoreType == "etcdv2" {
+		cfg.Spec.DatastoreType = apiconfig.DatastoreType(config.DatastoreType)
 	}
 
-	if !config.IpInIpEnabled && !config.VXLANEnabled {
+	if !config.IpInIpEnabled {
 		// Polling k8s for node updates is expensive (because we get many superfluous
 		// updates) so disable if we don't need it.
-		log.Info("Encap disabled, disabling node poll (if KDD is in use).")
+		log.Info("IPIP disabled, disabling node poll (if KDD is in use).")
 		cfg.Spec.K8sDisableNodePoll = true
 	}
 	return *cfg
@@ -437,7 +438,7 @@ func (config *Config) Validate() (err error) {
 		err = errors.New("Failed to determine hostname")
 	}
 
-	if config.DatastoreType == "etcdv3" && len(config.EtcdEndpoints) == 0 {
+	if config.DatastoreType == "etcdv2" && len(config.EtcdEndpoints) == 0 {
 		if config.EtcdScheme == "" {
 			err = errors.New("EtcdEndpoints and EtcdScheme both missing")
 		}
