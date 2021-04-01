@@ -250,7 +250,7 @@ var _ = Describe("health tests", func() {
 		Describe("after removing iptables-restore", func() {
 			BeforeEach(func() {
 				// Delete iptables-restore in order to make the first apply() fail.
-				err := felixContainer.ExecMayFail("rm", "/sbin/iptables-restore")
+				err := felixContainer.ExecMayFail("rm", "/usr/sbin/iptables-legacy-restore")
 				Expect(err).NotTo(HaveOccurred())
 
 				createPerNodeConfig()
@@ -267,15 +267,15 @@ var _ = Describe("health tests", func() {
 			BeforeEach(func() {
 				// We need to delete the file first since it's a symlink and "docker cp"
 				// follows the link and overwrites the wrong file if we don't.
-				err := felixContainer.ExecMayFail("rm", "/sbin/iptables-restore")
+				err := felixContainer.ExecMayFail("rm", "/usr/sbin/iptables-legacy-restore")
 				Expect(err).NotTo(HaveOccurred())
 
 				// Copy in the nobbled iptables command.
 				err = felixContainer.CopyFileIntoContainer("slow-iptables-restore",
-					"/sbin/iptables-restore")
+					"/usr/sbin/iptables-legacy-restore")
 				Expect(err).NotTo(HaveOccurred())
 				// Make it executable.
-				err = felixContainer.ExecMayFail("chmod", "+x", "/sbin/iptables-restore")
+				err = felixContainer.ExecMayFail("chmod", "+x", "/usr/sbin/iptables-legacy-restore")
 				Expect(err).NotTo(HaveOccurred())
 
 				// Insert per-node config.  This will trigger felix to start up.

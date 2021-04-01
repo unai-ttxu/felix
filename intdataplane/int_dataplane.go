@@ -99,6 +99,7 @@ type Config struct {
 
 	IPSetsRefreshInterval          time.Duration
 	RouteRefreshInterval           time.Duration
+	IptablesBackend                string
 	IptablesRefreshInterval        time.Duration
 	IptablesPostWriteCheckInterval time.Duration
 	IptablesInsertMode             string
@@ -116,6 +117,8 @@ type Config struct {
 	HealthAggregator   *health.HealthAggregator
 
 	DebugSimulateDataplaneHangAfter time.Duration
+
+	LookPathOverride func(file string) (string, error)
 }
 
 // InternalDataplane implements an in-process Felix dataplane driver based on iptables
@@ -229,14 +232,23 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 		InsertMode:            config.IptablesInsertMode,
 		RefreshInterval:       config.IptablesRefreshInterval,
 		PostWriteInterval:     config.IptablesPostWriteCheckInterval,
+		BackendMode:           config.IptablesBackend,
+		LookPathOverride:      config.LookPathOverride,
 	}
 
 	// However, the NAT tables need an extra cleanup regex.
 	iptablesNATOptions := iptablesOptions
 	iptablesNATOptions.ExtraCleanupRegexPattern = rules.HistoricInsertedNATRuleRegex
 
+	featureDetector := iptables.NewFeatureDetector()
+	iptablesFeatures := featureDetector.GetFeatures()
+
 	var iptablesLock sync.Locker
-	if config.IptablesLockTimeout <= 0 {
+	if iptablesFeatures.RestoreSupportsLock {
+		log.Debug("Calico implementation of iptables lock disabled (because detected version of " +
+			"iptables-restore will use its own implementation).")
+		iptablesLock = dummyLock{}
+	} else if config.IptablesLockTimeout <= 0 {
 		log.Info("iptables lock disabled.")
 		iptablesLock = dummyLock{}
 	} else {
@@ -257,12 +269,14 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 		4,
 		rules.RuleHashPrefix,
 		iptablesLock,
+		featureDetector,
 		iptablesOptions)
 	natTableV4 := iptables.NewTable(
 		"nat",
 		4,
 		rules.RuleHashPrefix,
 		iptablesLock,
+		featureDetector,
 		iptablesNATOptions,
 	)
 	rawTableV4 := iptables.NewTable(
@@ -270,12 +284,14 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 		4,
 		rules.RuleHashPrefix,
 		iptablesLock,
+		featureDetector,
 		iptablesOptions)
 	filterTableV4 := iptables.NewTable(
 		"filter",
 		4,
 		rules.RuleHashPrefix,
 		iptablesLock,
+		featureDetector,
 		iptablesOptions)
 	ipSetsConfigV4 := config.RulesConfig.IPSetConfigV4
 	ipSetsV4 := ipsets.NewIPSets(ipSetsConfigV4)
@@ -314,6 +330,7 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 			6,
 			rules.RuleHashPrefix,
 			iptablesLock,
+			featureDetector,
 			iptablesOptions,
 		)
 		natTableV6 := iptables.NewTable(
@@ -321,6 +338,7 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 			6,
 			rules.RuleHashPrefix,
 			iptablesLock,
+			featureDetector,
 			iptablesNATOptions,
 		)
 		rawTableV6 := iptables.NewTable(
@@ -328,6 +346,7 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 			6,
 			rules.RuleHashPrefix,
 			iptablesLock,
+			featureDetector,
 			iptablesOptions,
 		)
 		filterTableV6 := iptables.NewTable(
@@ -335,6 +354,7 @@ func NewIntDataplaneDriver(config Config) *InternalDataplane {
 			6,
 			rules.RuleHashPrefix,
 			iptablesLock,
+			featureDetector,
 			iptablesOptions,
 		)
 

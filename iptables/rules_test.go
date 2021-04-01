@@ -76,6 +76,9 @@ var _ = Describe("Hash extraction tests", func() {
 			TableOptions{
 				HistoricChainPrefixes:    []string{"felix-", "cali"},
 				ExtraCleanupRegexPattern: "an-old-rule",
+				BackendMode:              "legacy",
+				LookPathOverride: func(file string) (s string, e error) {
+					return s, nil
 			},
 		)
 	})

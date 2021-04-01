@@ -289,6 +289,7 @@ configRetry:
 				DisableConntrackInvalid: configParams.DisableConntrackInvalidCheck,
 			},
 			IPIPMTU:                        configParams.IpInIpMtu,
+			IptablesBackend:                configParams.IptablesBackend,
 			IptablesRefreshInterval:        configParams.IptablesRefreshInterval,
 			RouteRefreshInterval:           configParams.RouteRefreshInterval,
 			IPSetsRefreshInterval:          configParams.IpsetsRefreshInterval,

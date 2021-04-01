@@ -1,6 +1,8 @@
 hash: ae19a6683f4e7b7589fb56478cb4567390928b1da0b7348ddac3f9fad5e32468
 updated: 2017-09-24T18:23:31.096170181-07:00
 imports:
+- name: github.com/hashicorp/go-version
+  version: ac23dc3fea5d1a983c43f6a0f6e2c13f0195d8bd
 - name: cloud.google.com/go
   version: 3b1ae45394a234c385be014e9a488f2bb6eef821
   subpackages:
