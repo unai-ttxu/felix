@@ -33,7 +33,7 @@ import (
 	"github.com/projectcalico/felix/logutils"
 	"github.com/projectcalico/felix/markbits"
 	"github.com/projectcalico/felix/rules"
-	"github.com/projectcalico/libcalico-go/lib/health"
+	"github.com/unai-ttxu/libcalico-go/lib/health"
 )
 
 func StartDataplaneDriver(configParams *config.Config,

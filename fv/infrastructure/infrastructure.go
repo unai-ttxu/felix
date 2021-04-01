@@ -15,8 +15,8 @@
 package infrastructure
 
 import (
-	api "github.com/projectcalico/libcalico-go/lib/apis/v3"
-	client "github.com/projectcalico/libcalico-go/lib/clientv3"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv3"
 )
 
 // DatastoreInfra is an interface that is to be used to abstract away

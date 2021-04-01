@@ -25,7 +25,7 @@ import (
 	"github.com/projectcalico/felix/proto"
 	"github.com/projectcalico/felix/rules"
 
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 // ipipManager manages the all-hosts IP set, which is used by some rules in our static chains

@@ -26,7 +26,7 @@ import (
 	"github.com/projectcalico/felix/fv/infrastructure"
 	"github.com/projectcalico/felix/fv/workload"
 
-	"github.com/projectcalico/libcalico-go/lib/testutils"
+	"github.com/unai-ttxu/libcalico-go/lib/testutils"
 )
 
 func init() {

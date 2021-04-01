@@ -28,7 +28,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	calinet "github.com/projectcalico/libcalico-go/lib/net"
+	calinet "github.com/unai-ttxu/libcalico-go/lib/net"
 )
 
 var ErrInvalidIP = errors.New("Failed to parse IP address")

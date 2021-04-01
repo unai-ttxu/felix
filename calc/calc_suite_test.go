@@ -23,8 +23,8 @@ import (
 	"github.com/onsi/ginkgo/reporters"
 	"github.com/sirupsen/logrus"
 
-	"github.com/projectcalico/libcalico-go/lib/logutils"
-	"github.com/projectcalico/libcalico-go/lib/testutils"
+	"github.com/unai-ttxu/libcalico-go/lib/logutils"
+	"github.com/unai-ttxu/libcalico-go/lib/testutils"
 )
 
 func init() {

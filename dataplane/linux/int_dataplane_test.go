@@ -25,7 +25,7 @@ import (
 	"github.com/projectcalico/felix/ifacemonitor"
 	"github.com/projectcalico/felix/ipsets"
 	"github.com/projectcalico/felix/rules"
-	"github.com/projectcalico/libcalico-go/lib/health"
+	"github.com/unai-ttxu/libcalico-go/lib/health"
 )
 
 var _ = Describe("Constructor test", func() {

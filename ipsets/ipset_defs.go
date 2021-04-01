@@ -26,7 +26,7 @@ import (
 
 	"github.com/projectcalico/felix/ip"
 	"github.com/projectcalico/felix/labelindex"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 var (

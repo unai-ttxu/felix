@@ -32,7 +32,7 @@ import (
 	"github.com/projectcalico/felix/bpf"
 	"github.com/projectcalico/felix/fv/infrastructure"
 	"github.com/projectcalico/felix/fv/workload"
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
 )
 
 type mapEntry struct {

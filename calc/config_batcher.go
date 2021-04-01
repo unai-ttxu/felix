@@ -18,8 +18,8 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/projectcalico/felix/dispatcher"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
 )
 
 type ConfigBatcher struct {

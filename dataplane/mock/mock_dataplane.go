@@ -24,7 +24,7 @@ import (
 
 	"github.com/projectcalico/felix/config"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 type MockDataplane struct {

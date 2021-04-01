@@ -20,7 +20,7 @@ import (
 
 	"github.com/projectcalico/felix/dataplane/mock"
 	"github.com/projectcalico/felix/proto"
-	. "github.com/projectcalico/libcalico-go/lib/backend/model"
+	. "github.com/unai-ttxu/libcalico-go/lib/backend/model"
 )
 
 // Pre-defined datastore states.  Each State object wraps up the complete state

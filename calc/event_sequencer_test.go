@@ -25,8 +25,8 @@ import (
 	"github.com/projectcalico/felix/calc"
 	"github.com/projectcalico/felix/config"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/net"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/net"
 )
 
 var _ = DescribeTable("ModelWorkloadEndpointToProto",

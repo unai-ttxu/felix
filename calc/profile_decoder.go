@@ -19,9 +19,9 @@ import (
 
 	"github.com/projectcalico/felix/dispatcher"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/k8s/conversion"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/k8s/conversion"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
 
 	log "github.com/sirupsen/logrus"
 )

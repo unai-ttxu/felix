@@ -27,9 +27,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
-	"github.com/projectcalico/libcalico-go/lib/names"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
+	"github.com/unai-ttxu/libcalico-go/lib/names"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 )
 
 var (

@@ -86,8 +86,8 @@ endif
 # assuming that there is a local checkout of libcalico in the same directory as this repo.
 LOCAL_BUILD_MOUNTS ?=
 ifeq ($(LOCAL_BUILD),true)
-LOCAL_BUILD_MOUNTS = -v $(CURDIR)/../libcalico-go:/go/src/$(PACKAGE_NAME)/vendor/github.com/projectcalico/libcalico-go:ro \
-	-v $(CURDIR)/.empty:/go/src/$(PACKAGE_NAME)/vendor/github.com/projectcalico/libcalico-go/vendor:ro \
+LOCAL_BUILD_MOUNTS = -v $(CURDIR)/../libcalico-go:/go/src/$(PACKAGE_NAME)/vendor/github.com/unai-ttxu/libcalico-go:ro \
+	-v $(CURDIR)/.empty:/go/src/$(PACKAGE_NAME)/vendor/github.com/unai-ttxu/libcalico-go/vendor:ro \
 	-v $(CURDIR)/../typha:/go/src/$(PACKAGE_NAME)/vendor/github.com/projectcalico/typha:ro \
 	-v $(CURDIR)/.empty:/go/src/$(PACKAGE_NAME)/vendor/github.com/projectcalico/typha/vendor:ro
 endif
@@ -221,7 +221,7 @@ LOCAL_GROUP_ID:=$(shell id -g)
 
 # Allow libcalico-go and the ssh auth sock to be mapped into the build container.
 ifdef LIBCALICOGO_PATH
-  EXTRA_DOCKER_ARGS += -v $(LIBCALICOGO_PATH):/go/src/github.com/projectcalico/libcalico-go:ro
+  EXTRA_DOCKER_ARGS += -v $(LIBCALICOGO_PATH):/go/src/github.com/unai-ttxu/libcalico-go:ro
 endif
 ifdef SSH_AUTH_SOCK
   EXTRA_DOCKER_ARGS += -v $(SSH_AUTH_SOCK):/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent

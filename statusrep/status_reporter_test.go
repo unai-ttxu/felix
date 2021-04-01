@@ -27,8 +27,8 @@ import (
 
 	"github.com/projectcalico/felix/jitter"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	calierrors "github.com/projectcalico/libcalico-go/lib/errors"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	calierrors "github.com/unai-ttxu/libcalico-go/lib/errors"
 )
 
 const hostname = "localhostname"

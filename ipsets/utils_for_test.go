@@ -34,7 +34,7 @@ import (
 	"regexp"
 
 	. "github.com/projectcalico/felix/ipsets"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 // This file contains shared test infrastructure for testing the ipsets package.

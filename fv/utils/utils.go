@@ -30,10 +30,10 @@ import (
 	"github.com/projectcalico/felix/calc"
 	"github.com/projectcalico/felix/ipsets"
 	"github.com/projectcalico/felix/rules"
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
-	client "github.com/projectcalico/libcalico-go/lib/clientv3"
-	"github.com/projectcalico/libcalico-go/lib/options"
-	"github.com/projectcalico/libcalico-go/lib/selector"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv3"
+	"github.com/unai-ttxu/libcalico-go/lib/options"
+	"github.com/unai-ttxu/libcalico-go/lib/selector"
 )
 
 type EnvConfig struct {
