@@ -248,7 +248,7 @@ imports:
   subpackages:
   - binder
 - name: github.com/unai-ttxu/typha
-  version: a2c9538e028b5a8a58f068a5aecf96c33034e83f
+  version: ef5c1fcfea1c5274bcc8934ece669891235a03f5 
   subpackages:
   - pkg/syncclient
   - pkg/syncproto
