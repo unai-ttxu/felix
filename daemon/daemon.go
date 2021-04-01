@@ -44,7 +44,7 @@ import (
 	"github.com/projectcalico/felix/proto"
 	"github.com/projectcalico/felix/statusrep"
 	"github.com/projectcalico/felix/usagerep"
-	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v1"
 	apiv3 "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
 	"github.com/unai-ttxu/libcalico-go/lib/backend"
 	bapi "github.com/unai-ttxu/libcalico-go/lib/backend/api"
@@ -155,7 +155,7 @@ func Run(configFile string) {
 	// loop until the datastore is ready.
 	log.Info("Loading configuration...")
 	var backendClient bapi.Client
-	var datastoreConfig apiconfig.CalicoAPIConfig
+	var datastoreConfig api.CalicoAPIConfig
 	var configParams *config.Config
 	var typhaAddr string
 	var numClientsCreated int

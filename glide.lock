@@ -205,7 +205,7 @@ imports:
 - name: github.com/projectcalico/go-yaml-wrapper
   version: 090425220c545f6d179db17af395f5aac30b6926
 - name: github.com/unai-ttxu/libcalico-go
-  version: bb45091da91ab1b23d3428bd292343937466097c 
+  version: d021b1a41ac89f9fae6af9adc7d5669174cbb275 
   subpackages:
   - lib/api
   - lib/apiconfig

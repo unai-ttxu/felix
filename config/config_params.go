@@ -413,7 +413,7 @@ func (config *Config) DatastoreConfig() api.CalicoAPIConfig {
 	// variable, and that the datastore type can be set by a DATASTORE_TYPE or
 	// CALICO_DATASTORE_TYPE variable.  (Except in the etcdv2 case which is handled specially
 	// above.)
-	cfg, err := api.LoadClientConfigFromEnvironment()
+	cfg, err := client.LoadClientConfigFromEnvironment()
 	if err != nil {
 		log.WithError(err).Panic("Failed to create datastore config")
 	}
