@@ -49,7 +49,7 @@ var _ = Context("with a k8s clientset", func() {
 			d = NewDeployment(clientset, 1, false)
 		})
 
-		// Test for https://github.com/projectcalico/libcalico-go/pull/375.
+		// Test for https://github.com/unai-ttxu/libcalico-go/pull/375.
 		It("should delete a pod whose IP has been cleared", func() {
 			time.Sleep(3 * time.Second)
 			nsName := nsPrefix + "1"

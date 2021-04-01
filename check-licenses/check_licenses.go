@@ -24,7 +24,7 @@ import (
 	"strings"
 
 	"github.com/projectcalico/felix/logutils"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 var (

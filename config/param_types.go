@@ -37,8 +37,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	cnet "github.com/projectcalico/libcalico-go/lib/net"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
+	cnet "github.com/unai-ttxu/libcalico-go/lib/net"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 )
 
 const (

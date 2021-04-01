@@ -24,7 +24,7 @@ import (
 	. "github.com/projectcalico/felix/ipsets"
 	"github.com/projectcalico/felix/labelindex"
 	"github.com/projectcalico/felix/rules"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 const (

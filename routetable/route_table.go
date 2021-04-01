@@ -29,7 +29,7 @@ import (
 	"github.com/projectcalico/felix/conntrack"
 	"github.com/projectcalico/felix/ifacemonitor"
 	"github.com/projectcalico/felix/ip"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 const (

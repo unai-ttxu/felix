@@ -48,15 +48,15 @@ import (
 	apierrs "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/projectcalico/libcalico-go/lib/apis/v3"
+	"github.com/unai-ttxu/libcalico-go/lib/apis/v3"
 
 	"time"
 
 	"github.com/projectcalico/felix/fv/containers"
 	"github.com/projectcalico/felix/fv/infrastructure"
 	"github.com/projectcalico/felix/fv/utils"
-	"github.com/projectcalico/libcalico-go/lib/health"
-	"github.com/projectcalico/libcalico-go/lib/options"
+	"github.com/unai-ttxu/libcalico-go/lib/health"
+	"github.com/unai-ttxu/libcalico-go/lib/options"
 )
 
 var _ = Describe("health tests", func() {

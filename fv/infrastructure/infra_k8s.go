@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
 
 	. "github.com/onsi/gomega"
 	log "github.com/sirupsen/logrus"
@@ -37,12 +37,12 @@ import (
 
 	"github.com/projectcalico/felix/fv/containers"
 	"github.com/projectcalico/felix/fv/utils"
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
-	api "github.com/projectcalico/libcalico-go/lib/apis/v3"
-	bapi "github.com/projectcalico/libcalico-go/lib/backend/api"
-	client "github.com/projectcalico/libcalico-go/lib/clientv3"
-	"github.com/projectcalico/libcalico-go/lib/names"
-	"github.com/projectcalico/libcalico-go/lib/options"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
+	bapi "github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv3"
+	"github.com/unai-ttxu/libcalico-go/lib/names"
+	"github.com/unai-ttxu/libcalico-go/lib/options"
 )
 
 type K8sDatastoreInfra struct {
@@ -236,7 +236,7 @@ func setupK8sDatastoreInfra() (*K8sDatastoreInfra, error) {
 	log.Info("Started controller manager.")
 
 	// Copy CRD registration manifest into the API server container, and apply it.
-	err := kds.k8sApiContainer.CopyFileIntoContainer("../vendor/github.com/projectcalico/libcalico-go/test/crds.yaml", "/crds.yaml")
+	err := kds.k8sApiContainer.CopyFileIntoContainer("../vendor/github.com/unai-ttxu/libcalico-go/test/crds.yaml", "/crds.yaml")
 	if err != nil {
 		TearDownK8sInfra(kds)
 		return nil, err

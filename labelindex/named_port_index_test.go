@@ -22,10 +22,10 @@ import (
 
 	"net"
 
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	calinet "github.com/projectcalico/libcalico-go/lib/net"
-	"github.com/projectcalico/libcalico-go/lib/selector"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	calinet "github.com/unai-ttxu/libcalico-go/lib/net"
+	"github.com/unai-ttxu/libcalico-go/lib/selector"
 )
 
 var _ = Describe("SelectorAndNamedPortIndex", func() {

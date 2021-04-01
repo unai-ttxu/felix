@@ -19,7 +19,7 @@ import (
 	"net"
 
 	. "github.com/projectcalico/felix/rules"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

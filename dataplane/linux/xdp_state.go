@@ -25,7 +25,7 @@ import (
 	"github.com/projectcalico/felix/bpf"
 	"github.com/projectcalico/felix/ipsets"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 // XDP state manages XDP programs installed on network interfaces and

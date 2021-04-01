@@ -18,9 +18,9 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/projectcalico/felix/dispatcher"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/net"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/net"
 )
 
 // DataplanePassthru passes through some datamodel updates to the dataplane layer, removing some

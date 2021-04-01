@@ -27,7 +27,7 @@ import (
 	"github.com/projectcalico/felix/ipsets"
 	. "github.com/projectcalico/felix/iptables"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 )
 
 var _ = Describe("Static", func() {

@@ -22,10 +22,10 @@ import (
 	"github.com/projectcalico/felix/dispatcher"
 	"github.com/projectcalico/felix/labelindex"
 	"github.com/projectcalico/felix/multidict"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/selector"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/selector"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 type ruleScanner interface {

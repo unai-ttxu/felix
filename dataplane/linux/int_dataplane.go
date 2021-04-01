@@ -39,8 +39,8 @@ import (
 	"github.com/projectcalico/felix/routetable"
 	"github.com/projectcalico/felix/rules"
 	"github.com/projectcalico/felix/throttle"
-	"github.com/projectcalico/libcalico-go/lib/health"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/health"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 const (

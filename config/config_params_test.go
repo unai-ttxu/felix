@@ -31,8 +31,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	v3 "github.com/projectcalico/libcalico-go/lib/apis/v3"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
+	v3 "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 )
 
 var _ = Describe("FelixConfig vs ConfigParams parity", func() {

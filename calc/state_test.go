@@ -22,9 +22,9 @@ import (
 
 	"github.com/projectcalico/felix/dataplane/mock"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 // A state represents a particular state of the datastore and the expected

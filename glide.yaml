@@ -47,7 +47,7 @@ import:
 # so pin the version that has it.
 - package: github.com/spf13/cobra
   version: ~0.0.3
-- package: github.com/projectcalico/libcalico-go
+- package: github.com/unai-ttxu/libcalico-go
   version: 5a23a805e6a0bb3636949497179ea06ec6e948a6
   subpackages:
   - lib/apiconfig

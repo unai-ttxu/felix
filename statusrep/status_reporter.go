@@ -22,9 +22,9 @@ import (
 
 	"github.com/projectcalico/felix/jitter"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/errors"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/errors"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 type EndpointStatusReporter struct {
@@ -104,7 +104,7 @@ func newEndpointStatusReporterWithTickerChans(hostname string,
 }
 
 // datastore is a copy of the parts of the backend client API that we need.
-// See github.com/projectcalico/libcalico-go/lib/backend/api for more detail.
+// See github.com/unai-ttxu/libcalico-go/lib/backend/api for more detail.
 type datastore interface {
 	List(ctx context.Context, list model.ListInterface, revision string) (*model.KVPairList, error)
 	Apply(ctx context.Context, object *model.KVPair) (*model.KVPair, error)

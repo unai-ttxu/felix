@@ -24,7 +24,7 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/projectcalico/felix/config"
-	"github.com/projectcalico/libcalico-go/lib/logutils"
+	"github.com/unai-ttxu/libcalico-go/lib/logutils"
 )
 
 func getFileDestination(configParams *config.Config, logLevel log.Level) (fileDest *logutils.Destination, fileDirErr error, fileOpenErr error) {

@@ -22,7 +22,7 @@ import (
 	"github.com/projectcalico/felix/iptables"
 	"github.com/projectcalico/felix/proto"
 	"github.com/projectcalico/felix/rules"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 var _ = Describe("Masquerade manager", func() {

@@ -19,7 +19,7 @@ import (
 
 	. "github.com/onsi/ginkgo"
 
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
 )
 
 type InfraFactory func() DatastoreInfra

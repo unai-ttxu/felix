@@ -26,10 +26,10 @@ import (
 	"github.com/projectcalico/felix/fv/utils"
 	"github.com/projectcalico/felix/fv/workload"
 	"github.com/projectcalico/felix/versionparse"
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
-	api "github.com/projectcalico/libcalico-go/lib/apis/v3"
-	client "github.com/projectcalico/libcalico-go/lib/clientv3"
-	"github.com/projectcalico/libcalico-go/lib/options"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv3"
+	"github.com/unai-ttxu/libcalico-go/lib/options"
 )
 
 const (

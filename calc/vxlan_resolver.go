@@ -24,11 +24,11 @@ import (
 	"github.com/projectcalico/felix/dispatcher"
 	"github.com/projectcalico/felix/ip"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/backend/encap"
-	"github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/net"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/encap"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/net"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 // VXLANResolver is responsible for resolving node IPs, node config, IPAM blocks,

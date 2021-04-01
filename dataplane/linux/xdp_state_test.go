@@ -26,7 +26,7 @@ import (
 	"github.com/projectcalico/felix/bpf"
 	"github.com/projectcalico/felix/ipsets"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 )
 
 type mockIPSetValue struct {

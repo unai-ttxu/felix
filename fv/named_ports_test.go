@@ -27,16 +27,16 @@ import (
 	. "github.com/onsi/gomega"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/projectcalico/libcalico-go/lib/apiconfig"
+	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
 
 	"github.com/projectcalico/felix/fv/containers"
 	"github.com/projectcalico/felix/fv/infrastructure"
 	"github.com/projectcalico/felix/fv/utils"
 	"github.com/projectcalico/felix/fv/workload"
-	api "github.com/projectcalico/libcalico-go/lib/apis/v3"
-	client "github.com/projectcalico/libcalico-go/lib/clientv3"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
-	"github.com/projectcalico/libcalico-go/lib/options"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv3"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
+	"github.com/unai-ttxu/libcalico-go/lib/options"
 )
 
 var _ = Context("TCP: Destination named ports: with initialized Felix, etcd datastore, 3 workloads, allow-all profile", func() {

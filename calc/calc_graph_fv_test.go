@@ -34,8 +34,8 @@ import (
 
 	"github.com/projectcalico/felix/config"
 	"github.com/projectcalico/felix/proto"
-	"github.com/projectcalico/libcalico-go/lib/backend/api"
-	"github.com/projectcalico/libcalico-go/lib/health"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/api"
+	"github.com/unai-ttxu/libcalico-go/lib/health"
 )
 
 // Each entry in baseTests contains a series of states to move through (defined in

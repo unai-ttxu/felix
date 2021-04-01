@@ -18,10 +18,10 @@ package calc_test
 // the model package.
 
 import (
-	"github.com/projectcalico/libcalico-go/lib/backend/encap"
-	. "github.com/projectcalico/libcalico-go/lib/backend/model"
-	"github.com/projectcalico/libcalico-go/lib/net"
-	"github.com/projectcalico/libcalico-go/lib/numorstring"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/encap"
+	. "github.com/unai-ttxu/libcalico-go/lib/backend/model"
+	"github.com/unai-ttxu/libcalico-go/lib/net"
+	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 )
 
 // Canned hostnames.

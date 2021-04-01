@@ -33,12 +33,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 
-	"github.com/projectcalico/libcalico-go/lib/backend/k8s/conversion"
-	"github.com/projectcalico/libcalico-go/lib/options"
+	"github.com/unai-ttxu/libcalico-go/lib/backend/k8s/conversion"
+	"github.com/unai-ttxu/libcalico-go/lib/options"
 	"github.com/projectcalico/pod2daemon/binder"
 
 	"github.com/projectcalico/felix/dataplane/mock"
-	"github.com/projectcalico/libcalico-go/lib/set"
+	"github.com/unai-ttxu/libcalico-go/lib/set"
 
 	"github.com/projectcalico/felix/proto"
 
@@ -46,8 +46,8 @@ import (
 	"github.com/projectcalico/felix/fv/infrastructure"
 	"github.com/projectcalico/felix/fv/utils"
 	"github.com/projectcalico/felix/fv/workload"
-	api "github.com/projectcalico/libcalico-go/lib/apis/v3"
-	client "github.com/projectcalico/libcalico-go/lib/clientv3"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v3"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv3"
 )
 
 var _ = Context("policy sync API tests", func() {
