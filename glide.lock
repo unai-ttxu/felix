@@ -205,7 +205,7 @@ imports:
 - name: github.com/projectcalico/go-yaml-wrapper
   version: 090425220c545f6d179db17af395f5aac30b6926
 - name: github.com/unai-ttxu/libcalico-go
-  version: b1d954f73d2e0663d66f072ac184ec98e23e161f 
+  version: bb45091da91ab1b23d3428bd292343937466097c 
   subpackages:
   - lib/api
   - lib/apiconfig
@@ -390,6 +390,8 @@ imports:
   - transport
 - name: gopkg.in/fsnotify.v1
   version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
+- name: gopkg.in/go-playground/validator.v8
+  version: 5f57d2222ad794d0dffb07e664ea05e2ee07d60c
 - name: gopkg.in/go-playground/validator.v9
   version: 21c910fc6d9c3556c28252b04beb17de0c2d40ec
 - name: gopkg.in/inf.v0

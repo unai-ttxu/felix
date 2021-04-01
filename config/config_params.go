@@ -27,8 +27,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/unai-ttxu/libcalico-go/lib/api"
-	"github.com/unai-ttxu/libcalico-go/lib/apiconfig"
+	api "github.com/unai-ttxu/libcalico-go/lib/apis/v1"
+	client "github.com/unai-ttxu/libcalico-go/lib/clientv1"
 	"github.com/unai-ttxu/libcalico-go/lib/names"
 	"github.com/unai-ttxu/libcalico-go/lib/numorstring"
 )
@@ -382,7 +382,7 @@ func (config *Config) setBy(name string, source Source) bool {
 	return set
 }
 
-func (config *Config) DatastoreConfig() apiconfig.CalicoAPIConfig {
+func (config *Config) DatastoreConfig() api.CalicoAPIConfig {
 	// Special case for etcdv2 datastore, where we want to honour established Felix-specific
 	// config mechanisms.
 	if config.DatastoreType == "etcdv2" {
@@ -394,14 +394,14 @@ func (config *Config) DatastoreConfig() apiconfig.CalicoAPIConfig {
 		} else {
 			etcdEndpoints = strings.Join(config.EtcdEndpoints, ",")
 		}
-		etcdCfg := apiconfig.EtcdConfig{
+		etcdCfg := api.EtcdConfig{
 			EtcdEndpoints:  etcdEndpoints,
 			EtcdKeyFile:    config.EtcdKeyFile,
 			EtcdCertFile:   config.EtcdCertFile,
 			EtcdCACertFile: config.EtcdCaFile,
 		}
-		return apiconfig.CalicoAPIConfig{
-			Spec: apiconfig.CalicoAPIConfigSpec{
+		return api.CalicoAPIConfig{
+			Spec: api.CalicoAPIConfigSpec{
 				DatastoreType: api.EtcdV2,
 				EtcdConfig:    etcdCfg,
 			},
@@ -413,14 +413,14 @@ func (config *Config) DatastoreConfig() apiconfig.CalicoAPIConfig {
 	// variable, and that the datastore type can be set by a DATASTORE_TYPE or
 	// CALICO_DATASTORE_TYPE variable.  (Except in the etcdv2 case which is handled specially
 	// above.)
-	cfg, err := apiconfig.LoadClientConfigFromEnvironment()
+	cfg, err := api.LoadClientConfigFromEnvironment()
 	if err != nil {
 		log.WithError(err).Panic("Failed to create datastore config")
 	}
 	// If that didn't set the datastore type (in which case the field will have been set to its
 	// default 'etcdv2' value), copy it from the Felix config.
 	if cfg.Spec.DatastoreType == "etcdv2" {
-		cfg.Spec.DatastoreType = apiconfig.DatastoreType(config.DatastoreType)
+		cfg.Spec.DatastoreType = api.DatastoreType(config.DatastoreType)
 	}
 
 	if !config.IpInIpEnabled {
