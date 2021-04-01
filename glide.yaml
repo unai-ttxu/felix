@@ -72,7 +72,7 @@ import:
   - lib/selector/parser
   - lib/set
   - lib/validator/v1
-- package: github.com/projectcalico/typha
+- package: github.com/unai-ttxu/typha
   version: 9d74e18ebe1acaa94d8fd8b297c4164e0a4ee1b1
   subpackages:
   - pkg/syncclient

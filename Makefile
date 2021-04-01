@@ -88,8 +88,8 @@ LOCAL_BUILD_MOUNTS ?=
 ifeq ($(LOCAL_BUILD),true)
 LOCAL_BUILD_MOUNTS = -v $(CURDIR)/../libcalico-go:/go/src/$(PACKAGE_NAME)/vendor/github.com/unai-ttxu/libcalico-go:ro \
 	-v $(CURDIR)/.empty:/go/src/$(PACKAGE_NAME)/vendor/github.com/unai-ttxu/libcalico-go/vendor:ro \
-	-v $(CURDIR)/../typha:/go/src/$(PACKAGE_NAME)/vendor/github.com/projectcalico/typha:ro \
-	-v $(CURDIR)/.empty:/go/src/$(PACKAGE_NAME)/vendor/github.com/projectcalico/typha/vendor:ro
+	-v $(CURDIR)/../typha:/go/src/$(PACKAGE_NAME)/vendor/github.com/unai-ttxu/typha:ro \
+	-v $(CURDIR)/.empty:/go/src/$(PACKAGE_NAME)/vendor/github.com/unai-ttxu/typha/vendor:ro
 endif
 
 # we want to be able to run the same recipe on multiple targets keyed on the image name
@@ -292,7 +292,7 @@ vendor/.up-to-date: glide.lock
 
 # Default the typha repo and version but allow them to be overridden
 TYPHA_BRANCH?=$(shell git rev-parse --abbrev-ref HEAD)
-TYPHA_REPO?=github.com/projectcalico/typha
+TYPHA_REPO?=github.com/unai-ttxu/typha
 TYPHA_VERSION?=$(shell git ls-remote git@github.com:projectcalico/typha $(TYPHA_BRANCH) 2>/dev/null | cut -f 1)
 
 ## Update typha pin in glide.yaml
@@ -558,9 +558,9 @@ check-typha-pins: vendor/.up-to-date
 	@echo "Felix's libcalico-go pin:"
 	@grep libcalico-go glide.lock -A 5 | grep 'version:' | head -n 1
 	@echo "Typha's libcalico-go pin:"
-	@grep libcalico-go vendor/github.com/projectcalico/typha/glide.lock -A 5 | grep 'version:' | head -n 1
+	@grep libcalico-go vendor/github.com/unai-ttxu/typha/glide.lock -A 5 | grep 'version:' | head -n 1
 	if [ "`grep libcalico-go glide.lock -A 5 | grep 'version:' | head -n 1`" != \
-	     "`grep libcalico-go vendor/github.com/projectcalico/typha/glide.lock -A 5 | grep 'version:' | head -n 1`" ]; then \
+	     "`grep libcalico-go vendor/github.com/unai-ttxu/typha/glide.lock -A 5 | grep 'version:' | head -n 1`" ]; then \
 	     echo "Typha and Felix libcalico-go pins differ."; \
 	     false; \
 	fi
