@@ -100,7 +100,7 @@ type Config struct {
 	UseInternalDataplaneDriver bool   `config:"bool;true"`
 	DataplaneDriver            string `config:"file(must-exist,executable);calico-iptables-plugin;non-zero,die-on-fail,skip-default-validation"`
 
-	DatastoreType string `config:"oneof(kubernetes,etcdv3);etcdv3;non-zero,die-on-fail,local"`
+	DatastoreType string `config:"oneof(kubernetes,etcdv2,etcdv3);etcdv2;non-zero,die-on-fail,local"`
 
 	FelixHostname string `config:"hostname;;local,non-zero"`
 
@@ -402,8 +402,13 @@ func (config *Config) DatastoreConfig() apiconfig.CalicoAPIConfig {
 
 	// Now allow FELIX_XXXYYY variables or XxxYyy config file settings to override that, in the
 	// etcd case.
-	if config.setByConfigFileOrEnvironment("DatastoreType") && config.DatastoreType == "etcdv3" {
-		cfg.Spec.DatastoreType = apiconfig.EtcdV3
+	if config.setByConfigFileOrEnvironment("DatastoreType") {
+		// DatastoreType.
+		if config.DatastoreType == "etcdv2" {
+			cfg.Spec.DatastoreType = apiconfig.EtcdV2
+		} else if config.DatastoreType == "etcdv3" {
+			cfg.Spec.DatastoreType = apiconfig.EtcdV3
+		}
 		// Endpoints.
 		if config.setByConfigFileOrEnvironment("EtcdEndpoints") && len(config.EtcdEndpoints) > 0 {
 			cfg.Spec.EtcdEndpoints = strings.Join(config.EtcdEndpoints, ",")
@@ -437,7 +442,7 @@ func (config *Config) Validate() (err error) {
 		err = errors.New("Failed to determine hostname")
 	}
 
-	if config.DatastoreType == "etcdv3" && len(config.EtcdEndpoints) == 0 {
+	if config.DatastoreType == "etcdv2" || config.DatastoreType == "etcdv3" && len(config.EtcdEndpoints) == 0 {
 		if config.EtcdScheme == "" {
 			err = errors.New("EtcdEndpoints and EtcdScheme both missing")
 		}
